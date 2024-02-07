@@ -1,0 +1,27 @@
+/* Write your global styles here, in PostCSS syntax */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+	@apply m-0 box-border p-0;
+}
+
+html,
+body {
+	@apply bg-neutral-950;
+}
+
+body {
+	overflow: hidden;
+}
+
+#container {
+	height: 100vh;
+	overflow-y: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+#canvas1 {
+	@apply absolute bottom-0 left-0 right-0 top-0 bg-neutral-950;
+}
