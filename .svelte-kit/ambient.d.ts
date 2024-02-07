@@ -43,12 +43,12 @@ declare module '$env/static/private' {
 	export const FIGTERM_SESSION_ID: string;
 	export const TMPDIR: string;
 	export const npm_package_scripts_lint: string;
+	export const npm_package_dependencies__sveltejs_kit: string;
 	export const TERM_PROGRAM_VERSION: string;
 	export const npm_package_scripts_dev: string;
 	export const npm_package_devDependencies_postcss_load_config: string;
 	export const TERM_SESSION_ID: string;
 	export const npm_package_private: string;
-	export const npm_package_devDependencies__sveltejs_kit: string;
 	export const npm_package_dependencies__sveltejs_adapter_vercel: string;
 	export const npm_config_registry: string;
 	export const PNPM_HOME: string;
@@ -127,7 +127,7 @@ declare module '$env/static/public' {
 }
 
 /**
- * This module provides access to runtime environment variables, as defined by the platform you're running on. For example if you're using [`adapter-node`](https://github.com/sveltejs/kit/tree/master/packages/adapter-node) (or running [`vite preview`](https://kit.svelte.dev/docs/cli)), this is equivalent to `process.env`. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env) _and do_ start with [`config.kit.env.privatePrefix`](https://kit.svelte.dev/docs/configuration#env) (if configured).
+ * This module provides access to runtime environment variables, as defined by the platform you're running on. For example if you're using [`adapter-node`](https://github.com/sveltejs/kit/tree/main/packages/adapter-node) (or running [`vite preview`](https://kit.svelte.dev/docs/cli)), this is equivalent to `process.env`. This module only includes variables that _do not_ begin with [`config.kit.env.publicPrefix`](https://kit.svelte.dev/docs/configuration#env) _and do_ start with [`config.kit.env.privatePrefix`](https://kit.svelte.dev/docs/configuration#env) (if configured).
  * 
  * This module cannot be imported into client-side code.
  * 
@@ -159,12 +159,12 @@ declare module '$env/dynamic/private' {
 		FIGTERM_SESSION_ID: string;
 		TMPDIR: string;
 		npm_package_scripts_lint: string;
+		npm_package_dependencies__sveltejs_kit: string;
 		TERM_PROGRAM_VERSION: string;
 		npm_package_scripts_dev: string;
 		npm_package_devDependencies_postcss_load_config: string;
 		TERM_SESSION_ID: string;
 		npm_package_private: string;
-		npm_package_devDependencies__sveltejs_kit: string;
 		npm_package_dependencies__sveltejs_adapter_vercel: string;
 		npm_config_registry: string;
 		PNPM_HOME: string;

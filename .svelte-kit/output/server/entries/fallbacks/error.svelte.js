@@ -1,4 +1,15 @@
 import { g as getContext, c as create_ssr_component, b as subscribe, e as escape } from "../../chunks/ssr.js";
+import "../../chunks/exports.js";
+function get(key, parse = JSON.parse) {
+  try {
+    return parse(sessionStorage[key]);
+  } catch {
+  }
+}
+const SNAPSHOT_KEY = "sveltekit:snapshot";
+const SCROLL_KEY = "sveltekit:scroll";
+get(SCROLL_KEY) ?? {};
+get(SNAPSHOT_KEY) ?? {};
 const getStores = () => {
   const stores = getContext("__svelte__");
   return {
