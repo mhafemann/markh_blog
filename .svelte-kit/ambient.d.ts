@@ -49,6 +49,7 @@ declare module '$env/static/private' {
 	export const TERM_SESSION_ID: string;
 	export const npm_package_private: string;
 	export const npm_package_devDependencies__sveltejs_kit: string;
+	export const npm_package_dependencies__sveltejs_adapter_vercel: string;
 	export const npm_config_registry: string;
 	export const PNPM_HOME: string;
 	export const ZSH: string;
@@ -164,6 +165,7 @@ declare module '$env/dynamic/private' {
 		TERM_SESSION_ID: string;
 		npm_package_private: string;
 		npm_package_devDependencies__sveltejs_kit: string;
+		npm_package_dependencies__sveltejs_adapter_vercel: string;
 		npm_config_registry: string;
 		PNPM_HOME: string;
 		ZSH: string;
