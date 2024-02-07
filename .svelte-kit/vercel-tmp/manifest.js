@@ -10,7 +10,7 @@ return {
 	assets: new Set(["favicon.png"]),
 	mimeTypes: {".png":"image/png"},
 	_: {
-		client: {"start":"_app/immutable/entry/start.d4tt8gXa.js","app":"_app/immutable/entry/app.wt5w0dVv.js","imports":["_app/immutable/entry/start.d4tt8gXa.js","_app/immutable/chunks/entry.DyZO9mw3.js","_app/immutable/chunks/scheduler.zMJaRgub.js","_app/immutable/entry/app.wt5w0dVv.js","_app/immutable/chunks/scheduler.zMJaRgub.js","_app/immutable/chunks/index.bdaJyo3N.js"],"stylesheets":[],"fonts":[],"uses_env_dynamic_public":false},
+		client: {"start":"_app/immutable/entry/start.H00h_AMv.js","app":"_app/immutable/entry/app.oRtBdzSL.js","imports":["_app/immutable/entry/start.H00h_AMv.js","_app/immutable/chunks/entry.q8_hOP7W.js","_app/immutable/chunks/scheduler.zMJaRgub.js","_app/immutable/entry/app.oRtBdzSL.js","_app/immutable/chunks/scheduler.zMJaRgub.js","_app/immutable/chunks/index.bdaJyo3N.js"],"stylesheets":[],"fonts":[],"uses_env_dynamic_public":false},
 		nodes: [
 			__memo(() => import('../output/server/nodes/0.js')),
 			__memo(() => import('../output/server/nodes/1.js')),
