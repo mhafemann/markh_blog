@@ -2,6 +2,17 @@
 	"version": 3,
 	"routes": [
 		{
+			"src": "/flow-fields",
+			"dest": "/flow-fields/"
+		},
+		{
+			"src": "/flow-fields/",
+			"status": 308,
+			"headers": {
+				"Location": "/flow-fields"
+			}
+		},
+		{
 			"src": "/_app/immutable/.+",
 			"headers": {
 				"cache-control": "public, immutable, max-age=31536000"
@@ -15,5 +26,12 @@
 			"dest": "/fn"
 		}
 	],
-	"overrides": {}
+	"overrides": {
+		"index.html": {
+			"path": ""
+		},
+		"flow-fields.html": {
+			"path": "flow-fields"
+		}
+	}
 }

@@ -1,4 +1,9 @@
 {
-	"/": [],
-	"/flow-fields": []
+	"/": [
+		"src/routes/+layout.ts",
+		"src/routes/+layout.ts"
+	],
+	"/flow-fields": [
+		"src/routes/+layout.ts"
+	]
 }
