@@ -40,7 +40,7 @@
   },
   "src/routes/+layout.svelte": {
     "css": [
-      "_app/immutable/assets/_layout.flqWCGzZ.css"
+      "_app/immutable/assets/_layout.FgTa8LLk.css"
     ],
     "file": "entries/pages/_layout.svelte.js",
     "imports": [
@@ -56,5 +56,13 @@
     ],
     "isEntry": true,
     "src": "src/routes/+page.svelte"
+  },
+  "src/routes/flow-fields/+page.svelte": {
+    "file": "entries/pages/flow-fields/_page.svelte.js",
+    "imports": [
+      "_ssr.js"
+    ],
+    "isEntry": true,
+    "src": "src/routes/flow-fields/+page.svelte"
   }
 }

@@ -4,7 +4,7 @@ import { getRandomSign } from '$lib';
 export class Particle {
 	x: number;
 	y: number;
-	radius: number = Math.floor(Math.random() * 8 + 4); // Math.random() * 5 +
+	radius: number = 5; // Math.floor(Math.random() * 6 + 2)
 	vx: number = Math.random() * 1 - 0.5; // velocity x
 	vy: number = Math.random() * 1 - 0.5; // velocity y
 	pushX: number = 0;

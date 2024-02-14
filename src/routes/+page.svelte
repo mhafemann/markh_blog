@@ -31,12 +31,6 @@
 	});
 </script>
 
-<div class="fixed left-12 top-12 z-50">
-	<h1 class="font-mono text-3xl uppercase text-fuchsia-700">
-		<a class="z-50" href="/#">markh.dev</a>
-	</h1>
-</div>
-
 <div class="z-40" id="container">
 	<canvas class="z-40" id="canvas1"></canvas>
 </div>

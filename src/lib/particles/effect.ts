@@ -7,7 +7,7 @@ export class Effect {
 	particles: Particle[] = [];
 	numberOfParticles: number = 200;
 	paused: boolean = false;
-	maxParticleDistance: number = 100;
+	maxParticleDistance: number = 200;
 	mouse: { x: number; y: number; pressed: boolean; radius: number } = {
 		x: 0,
 		y: 0,
