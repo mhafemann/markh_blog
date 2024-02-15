@@ -122,7 +122,16 @@ const options = {
   root: Root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<link rel="icon" href="' + assets2 + '/favicon.png" />\n		<meta name="viewport" content="width=device-width, initial-scale=1" />\n		' + head + '\n	</head>\n	<body data-sveltekit-preload-data="hover">\n		<div style="display: contents">' + body + "</div>\n	</body>\n</html>\n",
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\r\n<html lang="en">\r\n	<head>\r\n		<meta charset="utf-8" />\r\n		<link rel="icon" href="' + assets2 + `/favicon.ico" />\r
+		<meta name="viewport" content="width=device-width, initial-scale=1" />\r
+		<meta name="description" content="Mark Hafemann's personal blog." />\r
+		<meta name="robots" content="index,follow" />\r
+		<meta name="googlebot" content="index,follow" />\r
+		<meta property="og:title" content="Mark Hafemann's Blog" />\r
+		<meta property="og:description" content="Home" />\r
+		<meta property="og:image" content="` + assets2 + `/mhog.png" />\r
+		<title>Mark Hafemann's Blog</title>\r
+		` + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover">\r\n		<div style="display: contents">' + body + "</div>\r\n	</body>\r\n</html>\r\n",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -194,7 +203,7 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "keebel"
+  version_hash: "lk5bgx"
 };
 async function get_hooks() {
   return {};
