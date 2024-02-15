@@ -18,7 +18,8 @@
 		gradient.addColorStop(0.5, 'magenta');
 		gradient.addColorStop(1, 'blue');
 		ctx.fillStyle = gradient;
-		ctx.strokeStyle = 'white';
+		ctx.fillStyle = gradient;
+		ctx.strokeStyle = '#4c4d4c';
 		effect = new Effect(canvas, ctx);
 
 		function animate() {

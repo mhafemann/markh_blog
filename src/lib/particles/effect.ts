@@ -5,9 +5,9 @@ export class Effect {
 	width: number;
 	height: number;
 	particles: Particle[] = [];
-	numberOfParticles: number = 200;
+	numberOfParticles: number = 0;
 	paused: boolean = false;
-	maxParticleDistance: number = 200;
+	maxParticleDistance: number = 0;
 	mouse: { x: number; y: number; pressed: boolean; radius: number } = {
 		x: 0,
 		y: 0,
@@ -23,7 +23,8 @@ export class Effect {
 		this.context = context;
 		this.width = this.canvas.width;
 		this.height = this.canvas.height;
-
+		this.numberOfParticles = Math.floor((this.width * this.height) / 4000);
+		this.maxParticleDistance = 125;
 		this.createParticles();
 
 		window.addEventListener('keydown', (e) => {
@@ -85,7 +86,7 @@ export class Effect {
 	}
 
 	connectParticles(context: CanvasRenderingContext2D) {
-		let opacity = 1;
+		let opacity;
 
 		context.save();
 		for (let a = 0; a < this.particles.length; a++) {
