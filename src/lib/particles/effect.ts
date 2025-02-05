@@ -62,12 +62,19 @@ export class Effect {
 			this.mouse.y = e.y;
 		});
 
+		window.addEventListener('mousemove', (e) => {
+			this.mouse.x = e.x;
+			this.mouse.y = e.y;
+		});
+
 		window.addEventListener('mouseup', (e) => {
 			this.mouse.pressed = false;
 		});
 	}
 
 	createParticles() {
+		if (this.particles.length > 0) return;
+
 		for (let i = 0; i < this.numberOfParticles; i++) {
 			this.particles.push(new Particle(this));
 		}
@@ -116,6 +123,7 @@ export class Effect {
 		this.width = width;
 		this.height = height;
 		this.context.fillStyle = 'white';
+
 		const gradient = this.context.createLinearGradient(0, 0, width, height);
 		gradient.addColorStop(0, 'white');
 		gradient.addColorStop(0.5, 'magenta');
