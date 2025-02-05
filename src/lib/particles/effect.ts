@@ -25,8 +25,8 @@ export class Effect {
 		this.height = this.canvas.height;
 		this.numberOfParticles = Math.floor((this.width * this.height) / 4000);
 		this.maxParticleDistance = 125;
-		this.createParticles();
-
+		if (this.particles.length === 0) this.createParticles();
+		console.log(this.particles.length);
 		window.addEventListener('keydown', (e) => {
 			if (e.code === 'Space') {
 				this.paused = !this.paused;
@@ -62,6 +62,11 @@ export class Effect {
 			this.mouse.y = e.y;
 		});
 
+		window.addEventListener('mousemove', (e) => {
+			this.mouse.x = e.x;
+			this.mouse.y = e.y;
+		});
+
 		window.addEventListener('mouseup', (e) => {
 			this.mouse.pressed = false;
 		});
@@ -81,6 +86,7 @@ export class Effect {
 			if (this.paused) {
 				return;
 			}
+
 			particle.update();
 		});
 	}
@@ -88,7 +94,6 @@ export class Effect {
 	connectParticles(context: CanvasRenderingContext2D) {
 		let opacity;
 
-		context.save();
 		for (let a = 0; a < this.particles.length; a++) {
 			for (let b = a; b < this.particles.length; b++) {
 				const distance = Math.sqrt(
@@ -107,7 +112,6 @@ export class Effect {
 				}
 			}
 		}
-		context.restore();
 	}
 
 	resize(width: number, height: number) {
@@ -116,11 +120,18 @@ export class Effect {
 		this.width = width;
 		this.height = height;
 		this.context.fillStyle = 'white';
-		const gradient = this.context.createLinearGradient(0, 0, width, height);
+
+		this.context.clearRect(0, 0, this.width, this.height);
+
+		const gradient = this.context.createLinearGradient(0, 0, this.canvas.width, this.canvas.height);
 		gradient.addColorStop(0, 'white');
 		gradient.addColorStop(0.5, 'magenta');
 		gradient.addColorStop(1, 'blue');
 		this.context.fillStyle = gradient;
+
+		// this.particles = [];
+		// this.createParticles();
+
 		this.context.strokeStyle = 'white';
 
 		this.particles.forEach((particle) => {

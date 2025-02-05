@@ -9,10 +9,10 @@
 
 	onMount(async () => {
 		canvas = document.getElementById('canvas1') as HTMLCanvasElement;
-
 		ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
 		canvas.width = window.innerWidth;
 		canvas.height = window.innerHeight;
+		ctx.clearRect(0, 0, canvas.width, canvas.height);
 		gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
 		gradient.addColorStop(0, 'lime');
 		gradient.addColorStop(0.5, 'magenta');
@@ -20,7 +20,8 @@
 		ctx.fillStyle = gradient;
 		ctx.fillStyle = gradient;
 		ctx.strokeStyle = '#4c4d4c';
-		effect = new Effect(canvas, ctx);
+
+		if (!effect) effect = new Effect(canvas, ctx);
 
 		function animate() {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
