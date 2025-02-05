@@ -28,7 +28,6 @@ export class Particle {
 			const dx = this.x - this.effect.mouse.x;
 			const dy = this.y - this.effect.mouse.y;
 			const distance = Math.hypot(dx, dy);
-
 			const force = this.effect.mouse.radius / distance;
 
 			// https://youtu.be/gxagf0WKfBo?feature=shared&t=673
@@ -57,8 +56,13 @@ export class Particle {
 			this.vy *= -1;
 		}
 	}
+
 	reset() {
 		this.x = this.radius + Math.random() * (this.effect.width - this.radius * 2);
 		this.y = this.radius + Math.random() * (this.effect.height - this.radius * 2);
+	}
+
+	updateFriction(newFriction: number) {
+		this.friction = newFriction;
 	}
 }
