@@ -1,6 +1,8 @@
 import { c as create_ssr_component, a as setContext, v as validate_component, m as missing_component } from "./ssr.js";
+import { a as afterUpdate } from "./ssr2.js";
 let base = "";
 let assets = base;
+const app_dir = "_app";
 const initial = { base, assets };
 function override(paths) {
   base = paths.base;
@@ -23,7 +25,11 @@ function set_public_env(environment) {
 function set_safe_public_env(environment) {
   safe_public_env = environment;
 }
-function afterUpdate() {
+let read_implementation = null;
+function set_read_implementation(fn) {
+  read_implementation = fn;
+}
+function set_manifest(_) {
 }
 let prerendering = false;
 function set_building() {
@@ -43,20 +49,13 @@ const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
     setContext("__svelte__", stores);
   }
   afterUpdate(stores.page.notify);
-  if ($$props.stores === void 0 && $$bindings.stores && stores !== void 0)
-    $$bindings.stores(stores);
-  if ($$props.page === void 0 && $$bindings.page && page !== void 0)
-    $$bindings.page(page);
-  if ($$props.constructors === void 0 && $$bindings.constructors && constructors !== void 0)
-    $$bindings.constructors(constructors);
-  if ($$props.components === void 0 && $$bindings.components && components !== void 0)
-    $$bindings.components(components);
-  if ($$props.form === void 0 && $$bindings.form && form !== void 0)
-    $$bindings.form(form);
-  if ($$props.data_0 === void 0 && $$bindings.data_0 && data_0 !== void 0)
-    $$bindings.data_0(data_0);
-  if ($$props.data_1 === void 0 && $$bindings.data_1 && data_1 !== void 0)
-    $$bindings.data_1(data_1);
+  if ($$props.stores === void 0 && $$bindings.stores && stores !== void 0) $$bindings.stores(stores);
+  if ($$props.page === void 0 && $$bindings.page && page !== void 0) $$bindings.page(page);
+  if ($$props.constructors === void 0 && $$bindings.constructors && constructors !== void 0) $$bindings.constructors(constructors);
+  if ($$props.components === void 0 && $$bindings.components && components !== void 0) $$bindings.components(components);
+  if ($$props.form === void 0 && $$bindings.form && form !== void 0) $$bindings.form(form);
+  if ($$props.data_0 === void 0 && $$bindings.data_0 && data_0 !== void 0) $$bindings.data_0(data_0);
+  if ($$props.data_1 === void 0 && $$bindings.data_1 && data_1 !== void 0) $$bindings.data_1(data_1);
   let $$settled;
   let $$rendered;
   let previous_head = $$result.head;
@@ -104,34 +103,30 @@ const Root = create_ssr_component(($$result, $$props, $$bindings, slots) => {
   } while (!$$settled);
   return $$rendered;
 });
-function set_read_implementation(fn) {
-}
-function set_manifest(_) {
-}
 const options = {
-  app_dir: "_app",
   app_template_contains_nonce: false,
   csp: { "mode": "auto", "directives": { "upgrade-insecure-requests": false, "block-all-mixed-content": false }, "reportOnly": { "upgrade-insecure-requests": false, "block-all-mixed-content": false } },
   csrf_check_origin: true,
   embedded: false,
   env_public_prefix: "PUBLIC_",
   env_private_prefix: "",
+  hash_routing: false,
   hooks: null,
   // added lazily, via `get_hooks`
   preload_strategy: "modulepreload",
   root: Root,
   service_worker: false,
   templates: {
-    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\r\n<html lang="en">\r\n	<head>\r\n		<meta charset="utf-8" />\r\n		<link rel="icon" href="' + assets2 + `/favicon.ico" />\r
-		<meta name="viewport" content="width=device-width, initial-scale=1" />\r
-		<meta name="description" content="Mark Hafemann's personal blog." />\r
-		<meta name="robots" content="index,follow" />\r
-		<meta name="googlebot" content="index,follow" />\r
-		<meta property="og:title" content="Mark Hafemann's Blog" />\r
-		<meta property="og:description" content="Home" />\r
-		<meta property="og:image" content="` + assets2 + `/mhog.png" />\r
-		<title>Mark Hafemann's Blog</title>\r
-		` + head + '\r\n	</head>\r\n	<body data-sveltekit-preload-data="hover">\r\n		<div style="display: contents">' + body + "</div>\r\n	</body>\r\n</html>\r\n",
+    app: ({ head, body, assets: assets2, nonce, env }) => '<!doctype html>\r\n<html lang="en">\r\n\r\n<head>\r\n  <meta charset="utf-8" />\r\n  <link rel="icon" href="' + assets2 + '/favicon.ico" />\r\n  <link rel="apple-touch-icon" sizes="180x180" href="' + assets2 + '/apple-touch-icon.png">\r\n  <link rel="icon" type="image/png" sizes="32x32" href="' + assets2 + '/favicon-32x32.png">\r\n  <link rel="icon" type="image/png" sizes="16x16" href="' + assets2 + '/favicon-16x16.png">\r\n  <link rel="manifest" href="' + assets2 + `/site.webmanifest">\r
+  <meta name="viewport" content="width=device-width, initial-scale=1" />\r
+  <meta name="description" content="Mark Hafemann's personal blog." />\r
+  <meta name="robots" content="index,follow" />\r
+  <meta name="googlebot" content="index,follow" />\r
+  <meta property="og:title" content="Mark Hafemann's Blog" />\r
+  <meta property="og:description" content="Homepage for markhafemann.com" />\r
+  <!-- <meta property="og:image" content="` + assets2 + `/mhog.png" /> -->\r
+  <title>Mark Hafemann's Blog</title>\r
+  ` + head + '\r\n</head>\r\n\r\n<body data-sveltekit-preload-data="hover">\r\n  <div style="display: contents">' + body + "</div>\r\n</body>\r\n\r\n</html>",
     error: ({ status, message }) => '<!doctype html>\n<html lang="en">\n	<head>\n		<meta charset="utf-8" />\n		<title>' + message + `</title>
 
 		<style>
@@ -203,27 +198,42 @@ const options = {
 		<div class="error">
 			<span class="status">` + status + '</span>\n			<div class="message">\n				<h1>' + message + "</h1>\n			</div>\n		</div>\n	</body>\n</html>\n"
   },
-  version_hash: "lk5bgx"
+  version_hash: "hgbzr2"
 };
 async function get_hooks() {
-  return {};
+  let handle;
+  let handleFetch;
+  let handleError;
+  let init;
+  let reroute;
+  let transport;
+  return {
+    handle,
+    handleFetch,
+    handleError,
+    init,
+    reroute,
+    transport
+  };
 }
 export {
-  assets as a,
+  app_dir as a,
   base as b,
-  options as c,
-  set_private_env as d,
-  prerendering as e,
-  set_public_env as f,
+  assets as c,
+  read_implementation as d,
+  options as e,
+  set_private_env as f,
   get_hooks as g,
-  set_safe_public_env as h,
-  set_assets as i,
-  set_building as j,
-  set_manifest as k,
-  set_prerendering as l,
-  set_read_implementation as m,
+  prerendering as h,
+  set_public_env as i,
+  set_safe_public_env as j,
+  set_read_implementation as k,
+  set_assets as l,
+  set_building as m,
+  set_manifest as n,
   override as o,
   public_env as p,
+  set_prerendering as q,
   reset as r,
   safe_public_env as s
 };

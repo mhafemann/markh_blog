@@ -1,6 +1,10 @@
 {
 	"runtime": "nodejs18.x",
-	"handler": "..\\..\\..\\..\\..\\..\\Users\\Mark\\dev\\blog\\markh_blog\\.svelte-kit\\vercel-tmp\\index.js",
+	"handler": "..\\..\\..\\..\\..\\Users\\markh\\Dev\\markh_blog\\.svelte-kit\\vercel-tmp\\index.js",
 	"launcherType": "Nodejs",
-	"experimentalResponseStreaming": true
+	"experimentalResponseStreaming": true,
+	"framework": {
+		"slug": "sveltekit",
+		"version": "2.17.1"
+	}
 }
